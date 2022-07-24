@@ -8,8 +8,12 @@
 <h1>BLE Scanner Demo</h1>
 <button class="btn btn-primary" @onclick="ConnectToScanner">Подключение</button>
 <div class="row mt-4">
-    <div class="col d-flex">
+    <div class="col">
         <span style="white-space: nowrap" class="me-1">Значение QR-кода:</span>
+    </div>
+</div>
+<div class="row mt-1">
+    <div class="col">
         <input type="text" style="width: 100%" value="@codeValue">
     </div>
 </div>
