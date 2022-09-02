@@ -1,54 +1,18 @@
-﻿@using Blazm.Bluetooth
-@using System.Text
-@inject IBluetoothNavigator navigator
+﻿@using System.Text
+
 @page "/"
 
 <PageTitle>Index</PageTitle>
 
 <h1>BLE Scanner Demo</h1>
-<button class="btn btn-primary" @onclick="ConnectToScanner">Подключение</button>
+<button class="btn btn-primary" disabled="@(!isBluetoothAvailable)" @onclick="ConnectToScanner">Connect</button>
 <div class="row mt-4">
     <div class="col">
-        <span style="white-space: nowrap" class="me-1">Значение QR-кода:</span>
+        <span style="white-space: nowrap" class="me-1">Result string:</span>
     </div>
 </div>
 <div class="row mt-1">
     <div class="col">
-        <input type="text" style="width: 100%" value="@codeValue">
+        <input type="text" style="width: 100%" value="@resultString">
     </div>
 </div>
-
-@code {
-    async void ConnectToScanner()
-    {
-        var serviceId = "0000feea-0000-1000-8000-00805f9b34fb";
-        var characteristics = "00002aa1-0000-1000-8000-00805f9b34fb";
-
-        var query = new RequestDeviceQuery();
-        query.AcceptAllDevices = false;
-        query.Filters.Add(new Filter { Name = "BarCode Scanner BLE" });
-        query.OptionalServices.Add(serviceId);
-
-        var device = await navigator.RequestDeviceAsync(query);
-        device.InitDevice(navigator);
-
-        await navigator.SetupNotifyAsync(device, serviceId, characteristics);
-        device.Notification += Device_Notification;
-    }
-
-    List<byte> buffer = new List<byte>();
-    string codeValue = string.Empty;
-
-    async void Device_Notification(object? sender, CharacteristicEventArgs e)
-    {
-        buffer.AddRange(e.Value);
-
-        if (buffer.Last() == 13)
-        {
-            codeValue = Encoding.Default.GetString(buffer.ToArray());
-            buffer.Clear();
-
-            await InvokeAsync(StateHasChanged);
-        }
-    }
-}
