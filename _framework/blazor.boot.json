@@ -8,7 +8,7 @@
   "resources": {
     "assembly": {
       "Blazor.Bluetooth.dll": "sha256-R73\/rFzu7S3gBClpwMqcPns19M02twYiip0vT2+jdME=",
-      "BLEScanner.dll": "sha256-Qd+VhI+gCB3LVGOCx1m3Ok\/lL\/5nJjbfOktfP4ZhdgM=",
+      "BLEScanner.dll": "sha256-cULltPCsN5DE6Hl+8xvYXFeZpkZxNKRy1Pu1kumaf38=",
       "Microsoft.AspNetCore.Components.dll": "sha256-NwyVeTUXjz0bc2LbSoCSpCDbrBrqM1GFvUE2Fk1KVik=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-PdYKNU3JFUSCwZkUC2EvjucmTjwE3xrGoa+SvpFmvWs=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-\/Dy2ObLVYzJ6Xlan\/StjJDmeXXNbucbohR2dQMoH3Zo=",
