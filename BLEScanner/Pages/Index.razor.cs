@@ -19,7 +19,9 @@ namespace BLEScanner.Pages
 
         protected override async Task OnInitializedAsync()
         {
+            // return false with v 1.0.5.3
             isBluetoothAvailable = await ScannerService.IsAvailable();
+
             NotifyService.ConnectToScanner += NotifyService_ConnectToScanner;
             NotifyService.ScannerRead += NotifyService_ScannerRead;
         }
